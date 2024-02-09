@@ -28,3 +28,30 @@ h5,
 h6 {
     font-weight: 600;
 }
+
+h1 {
+    @include fluid-text(70, 50);
+}
+
+
+h2 {
+    @include fluid-text(50, 40);
+}
+
+h3 {
+    @include fluid-text(24, 24);
+}
+
+h4 {
+    @include fluid-text(25, 20);
+}
+
+h4 {
+    @include fluid-text(24, 16);
+}
+
+p {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(239, 237, 232, 0.65);
+}
