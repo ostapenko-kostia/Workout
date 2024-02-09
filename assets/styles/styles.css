@@ -580,6 +580,107 @@ p {
           column-gap: 18px;
 }
 
+.services {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 50px;
+}
+.services-cards__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media (max-width: 1280px) {
+  .services .services__card {
+    width: 48%;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .services .services__card {
+    width: 100%;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.services__card {
+  height: 190px;
+  border-radius: var(--border-radius);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 52px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+  background-color: var(--color-dark-blue-alt);
+  -webkit-transition-duration: var(--transition-duration) !important;
+          transition-duration: var(--transition-duration) !important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .services__card:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@media (hover: none) {
+  .services__card:active {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+.services__card .services-card__leftSide {
+  max-width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 12px;
+}
+.services__card .services-card__rightSide {
+  width: 25px;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+}
+
+.services__card-dark {
+  background-color: var(--color-dark-blue);
+}
+
+.services__card-grey {
+  background-color: var(--color-grey);
+}
+
 section {
   padding: var(--section-padding-y) 0;
 }

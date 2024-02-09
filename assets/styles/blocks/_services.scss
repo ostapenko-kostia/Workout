@@ -1,0 +1,27 @@
+.services {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+
+    &-cards__list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    @include desktop {
+        .services__card {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @include mobile {
+        .services__card {
+            width: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
