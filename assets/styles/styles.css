@@ -1,0 +1,474 @@
+@charset "UTF-8";
+:root {
+  --color-dark: #171717;
+  --color-dark-alt: #303030;
+  --color-grey: #4f5261;
+  --color-dark-blue: #232532;
+  --color-dark-blue-alt: #323443;
+  --color-red: #e6533c;
+  --color-purple: #7a29dc;
+  --color-light: #fafaf9;
+  --color-orange: #ef8964;
+  --color-orange-alt: #efa082;
+  --border-radius: 12px;
+  --border-radius-small: 10px;
+  --font-family-base: "Inter", sans-serif;
+  --container-width: 1240px;
+  --container-padding-x: 20px;
+  --section-padding-y: 100px;
+  --cards-height: 190px;
+  --biling-cards-height: 640px;
+  --transition-duration: 0.2s;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  -webkit-transition-property: fill, stroke;
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(100%) !important;
+          clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .visible-mobile {
+    display: none !important;
+  }
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.28;
+}
+
+a,
+button,
+input,
+textarea,
+svg {
+  -webkit-transition-duration: var(--transition-duration) !important;
+          transition-duration: var(--transition-duration) !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+.burger-button {
+  padding: 0;
+  background: transparent;
+  border: none;
+  width: 48px;
+  aspect-ratio: 1;
+  position: relative;
+  border-radius: var(--border-radius);
+}
+@media (hover: hover) {
+  .burger-button:hover {
+    background-color: var(--color-dark-blue);
+  }
+}
+@media (hover: none) {
+  .burger-button:active {
+    background-color: var(--color-dark-blue);
+  }
+}
+.burger-button::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  content: "";
+  width: 50%;
+  height: 2px;
+  background-color: var(--color-light);
+  border-radius: 5px;
+  -webkit-box-shadow: 0 -8px var(--color-light), 0 8px var(--color-light);
+          box-shadow: 0 -8px var(--color-light), 0 8px var(--color-light);
+}
+
+.button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 70px;
+  width: 200px;
+  padding: 25px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-red);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .button:hover {
+    scale: 1.1;
+  }
+}
+@media (hover: none) {
+  .button:active {
+    scale: 1.1;
+  }
+}
+
+.header {
+  padding-top: 49px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.header__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.header__inner .logo h1 {
+  font-size: 16px;
+}
+.header__menu {
+  margin-left: auto;
+  font-size: 12px;
+}
+.header__menu-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
+}
+.header__menu-link {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 48px;
+}
+@media (hover: hover) {
+  .header__menu-link:hover::after {
+    width: 100%;
+  }
+}
+@media (hover: none) {
+  .header__menu-link:active::after {
+    width: 100%;
+  }
+}
+.header__menu-link::after {
+  content: "";
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  translate: -50%;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  -webkit-transition-duration: var(--transition-duration);
+          transition-duration: var(--transition-duration);
+}
+.header__burger-button {
+  margin-left: auto;
+}
+
+.cross-button {
+  padding: 0;
+  background: transparent;
+  border: none;
+  width: 48px;
+  aspect-ratio: 1;
+  position: relative;
+  border-radius: var(--border-radius);
+}
+@media (hover: hover) {
+  .cross-button:hover {
+    background-color: var(--color-dark-blue);
+  }
+}
+@media (hover: none) {
+  .cross-button:active {
+    background-color: var(--color-dark-blue);
+  }
+}
+.cross-button::before, .cross-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  width: 70%;
+  height: 2px;
+  background-color: var(--color-light);
+  border-radius: 5px;
+}
+.cross-button::before {
+  rotate: 45deg;
+}
+.cross-button::after {
+  rotate: -45deg;
+}
+
+.mobile-overlay {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  background-color: var(--color-dark);
+  padding: 50px 20px;
+}
+.mobile-overlay:modal {
+  max-width: 100%;
+  max-height: 100%;
+}
+.mobile-overlay__close-button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+.mobile-overlay__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 30px;
+  color: var(--color-light);
+  font-weight: 600;
+  min-height: 80vh;
+}

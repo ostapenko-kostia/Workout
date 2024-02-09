@@ -1,0 +1,21 @@
+.button {
+    @include flex-center(true);
+
+    height: 70px;
+    width: 200px;
+    padding: 25px;
+
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-red);
+
+    user-select: none;
+    cursor: pointer;
+    
+    @include hover {
+        scale: 1.1;
+    }
+}
