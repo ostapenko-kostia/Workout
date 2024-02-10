@@ -1,0 +1,13 @@
+.membership__cards-wrapper {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+
+    @include mobile {
+        flex-direction: column;
+        column-gap: 0;
+        width: fit-content;
+        margin-inline: auto;
+        row-gap: 20px;
+    }
+}

@@ -1,0 +1,13 @@
+.membership__header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    margin-bottom: 40px;
+    
+    &-decoration {
+        width: 100%;
+        background-color: rgba(216, 216, 216, 0.4);
+        border: none;
+        height: 0.5px;
+    }
+}
