@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="assets/styles/styles.css" />
     </head>
     <body>
-        <header class="header">
+        <header class="header" id="header">
             <div class="header__inner container">
                 <a href="javascript: void(0)" class="header__logo logo">
                     <h1>Workout</h1>
@@ -379,13 +379,19 @@
                                         Rest Day Complete
                                     </li>
                                 </ul>
-                                <button class="membership-card__button">Join Club Now!</button>
+                                <button class="membership-card__button">
+                                    Join Club Now!
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
+
+        <a class="back-to-top-button" id="to-top-button" href="#header">
+            Back to Top <img src="assets/images/chevron_big_up.svg" alt="" />
+        </a>
 
         <dialog class="mobile-overlay visible-mobile" id="mobileOverlay">
             <form class="mobile-overlay__close-button-wrapper" method="dialog">
