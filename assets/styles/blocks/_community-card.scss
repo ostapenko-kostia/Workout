@@ -1,0 +1,34 @@
+.community-card {
+    display: flex;
+    width: 100%;
+    column-gap: 70px;
+    align-items: center;
+
+    &__left-side {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        @include fluid-text(40, 30);
+        margin-bottom: 38px;
+    }
+
+    &__description {
+        margin-bottom: 24px;
+    }
+
+    @include tablet {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 70px;
+    }
+
+    @include mobile {
+        .community-card {
+            img {
+                width: 200px;
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@
   --color-light: #fafaf9;
   --color-orange: #ef8964;
   --color-orange-alt: #efa082;
+  --color-aqua: #0070C9;
   --border-radius: 12px;
   --border-radius-small: 10px;
   --font-family-base: "Inter", sans-serif;
@@ -192,7 +193,7 @@ svg * {
   font-display: swap;
 }
 .container {
-  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2) !important;
   margin-inline: auto;
   padding-inline: var(--container-padding-x);
 }
@@ -679,6 +680,88 @@ p {
 
 .services__card-grey {
   background-color: var(--color-grey);
+}
+
+.see-more {
+  max-width: 150px;
+  height: 27px;
+  border: none;
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+  color: var(--color-aqua);
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .see-more:hover {
+    text-decoration: underline;
+  }
+}
+@media (hover: none) {
+  .see-more:active {
+    text-decoration: underline;
+  }
+}
+
+.community-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-column-gap: 70px;
+     -moz-column-gap: 70px;
+          column-gap: 70px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.community-card__left-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.community-card__title {
+  font-size: clamp(30px, 2.7777777778vw, 40px);
+  margin-bottom: 38px;
+}
+.community-card__description {
+  margin-bottom: 24px;
+}
+@media (max-width: 1023px) {
+  .community-card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-column-gap: 0;
+       -moz-column-gap: 0;
+            column-gap: 0;
+    row-gap: 70px;
+  }
+}
+@media (max-width: 767px) {
+  .community-card .community-card img {
+    width: 200px;
+  }
+}
+
+.community__wrapper .section__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 120px;
 }
 
 section {

@@ -1,0 +1,14 @@
+.see-more {
+    max-width: 150px;
+    height: 27px;
+    border: none;
+    background: transparent;
+    display: flex;
+    column-gap: 10px;
+    color: var(--color-aqua);
+    cursor: pointer;
+
+    @include hover {
+        text-decoration: underline;
+    }
+}
